@@ -1,0 +1,4 @@
+<a [routerLink]="['search']" [queryParams]="{ category: category.category }" class="category-tile" [title]="category.category">
+  <img [src]="category.thumbnail" [alt]="category.category" />
+  <h4>{{ category.category }}</h4>
+</a>

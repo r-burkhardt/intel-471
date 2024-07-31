@@ -1,0 +1,10 @@
+<div class="recipe-tile-grid" [class.recipe-tile-grid--empty]="meals.length === 0">
+  <ng-container *ngIf="meals.length > 0; else noMeals">
+    <ng-container *ngFor="let meal of meals">
+      <app-recipe-tile [meal]="meal"></app-recipe-tile>
+    </ng-container>
+  </ng-container>
+  <ng-template #noMeals>
+    <p>No meals found</p>
+  </ng-template>
+</div>

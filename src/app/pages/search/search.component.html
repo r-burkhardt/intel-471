@@ -1,0 +1,9 @@
+<div class="search">
+  <app-filters [(filters)]="filters" (filtersChange)="filtersChanged()"></app-filters>
+  <article *ngIf="vm() as vm" class="search-results">
+    <section>
+<!--      <h2>Search Results</h2>-->
+      <app-recipe-tile-grid [meals]="displayLatest ? vm.latestMeals : vm.meals"></app-recipe-tile-grid>
+    </section>
+  </article>
+</div>

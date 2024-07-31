@@ -1,0 +1,79 @@
+<article *ngIf="meal" class="recipe-details">
+
+  <section class="recipe-details-title">
+    <img [src]="meal.thumbnail" [alt]="meal.name" />
+    <div class="recipe-details-title__details">
+      <h1>{{ meal.name | titlecase }}</h1>
+      <dl>
+        <ng-container *ngIf="meal.category">
+        <dt>Category</dt>
+        <dd>{{ meal.category }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.area">
+
+        <dt>Area</dt>
+        <dd>{{ meal.area }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.tags?.length">
+        <dt>Tags</dt>
+          <dd>{{ meal.tags }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.servings">
+          <dt>Servings</dt>
+          <dd>{{ meal.servings }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.youtube">
+          <dt>Video</dt>
+          <dd><a [href]="meal.youtube">Watch on YouTube</a></dd>
+        </ng-container>
+        <ng-container *ngIf="meal.source">
+          <dt>Source</dt>
+          <dd><a [href]="meal.source">Recipe Source</a></dd>
+        </ng-container>
+      </dl>
+    </div>
+  </section>
+
+  <section class="recipe-details-ingredients">
+    <h3>Ingredients</h3>
+    <dl>
+      <ng-container *ngFor="let ingredient of meal.ingredients">
+        <dt>{{ ingredient.ingredient }}</dt>
+        <dd>{{ ingredient.measure }}</dd>
+      </ng-container>
+    </dl>
+  </section>
+
+  <section class="recipe-details-instructions">
+    <h3>Instructions</h3>
+    <ol>
+      <ng-container *ngFor="let instruction of meal.instructions">
+        <li>{{ instruction }}</li>
+      </ng-container>
+    </ol>
+  </section>
+
+</article>
+
+<ng-template #mealTemplate let-meal>
+  <!--  <section>-->
+  <!--    <h1>{{ vm.meal.strMeal }}</h1>-->
+  <!--    <p>{{ vm.meal.strInstructions }}</p>-->
+  <!--  </section>-->
+  <!--  <section>-->
+  <!--    <h3>Ingredients</h3>-->
+  <!--    <ul>-->
+  <!--      <li *ngFor="let ingredient of vm.ingredients">{{ ingredient }}</li>-->
+  <!--    </ul>-->
+  <!--  </section>-->
+  <!--  <section>-->
+  <!--    <h3>Instructions</h3>-->
+  <!--    <ol>-->
+  <!--      <li *ngFor="let instruction of vm.instructions">{{ instruction }}</li>-->
+  <!--    </ol>-->
+  <!--  </section>-->
+  <!--  <section>-->
+  <!--    <h3>Video</h3>-->
+  <!--    <iframe width="560" height="315" [src]="vm.meal.strYoutube | safe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+  <!--  </section>-->
+</ng-template>

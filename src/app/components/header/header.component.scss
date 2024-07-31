@@ -1,0 +1,35 @@
+.header {
+  height: fit-content;
+  overflow: hidden;
+  padding: 1rem 1rem 2rem;
+  transition: all 0.5s ease-in-out;
+
+  &--hidden {
+    height: 0;
+    padding: 0 1rem;
+  }
+
+  a {
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-start;
+    text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:visited {
+      color: inherit;
+    }
+  }
+
+
+  &__logo {
+    aspect-ratio: 1;
+    height: 6rem;
+    margin-inline-end: 1.5rem;
+  }
+
+  &__wordmark {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,23 @@
+<a [routerLink]="['/meal', meal.id]" class="recipe-tile">
+  <img [src]="meal.thumbnail + '/preview'" [alt]="meal.name" />
+  <div class="recipe-tile-details"
+       [class.recipe-tile-details--title-only]="!meal.category && !meal.area && !meal.tags?.length">
+    <h3>{{ meal.name | titlecase }}</h3>
+    <ng-container *ngIf="meal.category || meal.area || meal.tags?.length">
+      <dl>
+        <ng-container *ngIf="meal.category">
+          <dt>Category</dt>
+          <dd>{{ meal.category }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.area">
+          <dt>Area</dt>
+          <dd>{{ meal.area }}</dd>
+        </ng-container>
+        <ng-container *ngIf="meal.tags?.length">
+          <dt>Tags</dt>
+          <dd>{{ meal.tags }}</dd>
+        </ng-container>
+      </dl>
+    </ng-container>
+  </div>
+</a>

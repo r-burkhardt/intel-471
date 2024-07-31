@@ -1,0 +1,61 @@
+<aside class="filters">
+  <div class="filters__search">
+    <h2>Search</h2>
+    <input
+      #search
+      type="search"
+      placeholder="Search by Name"
+      [(ngModel)]="searchInput" (keyup.enter)="onSearch()">
+    <button type="submit" (click)="onSearch()">Search</button>
+  </div>
+  <div class="filters__filter-block">
+    <ng-container *ngIf="vm() as vm">
+      <div class="filters__filter-head">
+        <h2>Filters</h2>(<a (click)="clearFilters()">Clear Filters</a>)
+      </div>
+      <details class="filters-details">
+        <summary>Categories</summary>
+        <ng-container *ngFor="let category of vm.categories | sort : 'asc' : 'category'">
+          <label class="filters-details__label">
+            <input type="radio" [checked]="category.category === selectedCategory" (change)="onSelectCategory($event)" [value]="category.category" name="category">{{ category.category }}
+          </label>
+        </ng-container>
+      </details>
+      <details class="filters-details">
+        <summary>Areas</summary>
+        <ng-container *ngFor="let area of vm.areas | sort">
+          <label class="filters-details__label">
+            <input type="radio" [checked]="area === selectedArea" (change)="onSelectArea($event)" [value]="area" name="area">{{ area }}
+          </label>
+        </ng-container>
+      </details>
+      <details class="filters-details">
+        <summary>Ingredients</summary>
+        <input
+          #ingredientSearch
+          type="search"
+          placeholder="Find an Ingredient"
+          (input)="searchIngredients($event)"
+          [disabled]="selectedIngredients.length === 5">
+        <div class="filters-details__list-max">
+          <div class="filters-details__selected-sticky" [class.filters-details__selected-sticky--hidden]="selectedIngredients.length === 0">
+            <ng-container *ngFor="let ingredient of selectedIngredients | sort">
+              <label class="filters-details__label">
+                <input type="checkbox" (change)="onUnselectIngredient(ingredient)" checked [value]="ingredient.ingredient">{{ ingredient.ingredient }}
+              </label>
+            </ng-container>
+          </div>
+          <ng-container *ngFor="let ingredient of (searchedIngredients || filteredIngredients || unselectedIngredients()) | sort : 'asc' : 'ingredient'">
+            <label class="filters-details__label">
+              <input
+                type="checkbox"
+                (change)="onSelectIngredient(ingredient)"
+                [disabled]="selectedIngredients.length === 5"
+                [value]="ingredient.ingredient">{{ ingredient.ingredient }}
+            </label>
+          </ng-container>
+        </div>
+      </details>
+    </ng-container>
+  </div>
+</aside>

@@ -1,0 +1,57 @@
+.landing {
+
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      aspect-ratio: 1;
+      height: 16rem;
+      object-fit: cover;
+    }
+
+    .wordmark {
+      font-size: 4rem;
+      margin-block: .75rem 1rem;
+    }
+  }
+
+  &__search {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+
+    input {
+      font-size: 1rem;
+      margin-inline-end: .25rem;
+      padding: .5rem;
+      width: 16rem;
+    }
+  }
+
+  &__featured {
+    border-bottom: 1px solid #ccc;
+    padding: 2rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  &__categories {
+    padding: 2rem;
+
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+.landing-categories-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  padding: 2rem;
+}

@@ -1,0 +1,31 @@
+.category-tile {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+  width: 8rem;
+
+  img {
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 8rem;
+    object-fit: cover;
+  }
+
+  h4 {
+    margin-block: .75rem 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    img {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
